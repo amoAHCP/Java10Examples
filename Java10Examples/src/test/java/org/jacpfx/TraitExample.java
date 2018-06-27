@@ -23,11 +23,26 @@ import org.junit.Test;
 
 public class TraitExample {
 
+  private SuperfruitDelegate fruit;
+
   @Test
   public void testPseudotraits() {
     Superfruit myFruit = new MySuperfruit("OrangeBanana","vitamin c", "vitamin b", "vitamin d");
-    var friut = (SuperfruitDelegate & Banana & Orange) () -> myFruit;
-    System.out.println("This is the fruit: "+friut.name()+" it contains vitamin c: "+friut.containsVitaminC() +" and vitamin b: "+friut.containsVitaminB());
+    var fruit = (SuperfruitDelegate & Banana & Orange) () -> myFruit;
+    System.out.println("This is the fruit: "+fruit.name()+" it contains vitamin c: "+fruit.containsVitaminC() +" and vitamin b: "+fruit.containsVitaminB());
+  }
+
+  @Test
+  public void testPseudotraits2() {
+    Superfruit myFruit = new MySuperfruit("OrangeBanana","vitamin c", "vitamin b", "vitamin d");
+    var fruit = (SuperfruitDelegate & Banana & Orange) () -> myFruit;
+    print(fruit);
+  }
+
+
+  public <A extends SuperfruitDelegate & Banana & Orange> void print(A fruit) {
+    System.out.println("This is the fruit: "+fruit.name()+" it contains vitamin c: "+fruit.containsVitaminC() +" and vitamin b: "+fruit.containsVitaminB());
+
   }
 
 }
